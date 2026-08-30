@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uma Trova e Cardápio</title>
+    
+    <style>
+        
+        .tables-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+       
+        .fancy-table {
+            border-collapse: collapse;
+            font-family: Arial, sans-serif;
+            min-width: 220px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .fancy-table th {
+            background-color: #4CAF50;
+            color: white;
+            text-align: left;
+            padding: 12px;
+        }
+
+        .fancy-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        
+        .fancy-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+       
+        .fancy-table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        
+        .links-section {
+            margin-top: 15px;
+            font-family: Arial, sans-serif;
+        }
+
+        .links-section a {
+            color: #1E88E5;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .links-section a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <img src="https://akamai.sscdn.co/uploadfile/letras/playlists/3/a/b/9/3ab92363f7974d679f4194de9f389b5b.jpg" width="200" alt="Capa da playlist"/>
+    
+    <h1>Uma trova...</h1>
+    
+    <p>
+       Eu só preciso de hoje<br/>      
+       Pra viver e ser feliz<br/>
+       O passado já me foge<br/>
+       E o futuro nada diz!<br/>
+    </p>
+    
+    <p>
+       <strong>Autor:</strong> Francisco Borges
+    </p>
+
+    <hr/>
+
+    <div class="tables-container">
+        <table class="fancy-table">
+            <thead>
+                <tr>
+                    <th>Bebida Quente</th>
+                    <th>Preço</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Café Expresso</td>
+                    <td>R$ 5,00</td>
+                </tr>
+                <tr>
+                    <td>Cappuccino</td>
+                    <td>R$ 8,50</td>
+                </tr>
+                <tr>
+                    <td>Chá de Hortelã</td>
+                    <td>R$ 4,50</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="fancy-table">
+            <thead>
+                <tr>
+                    <th>Bebida Gelada</th>
+                    <th>Preço</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Suco Natural</td>
+                    <td>R$ 7,00</td>
+                </tr>
+                <tr>
+                    <td>Refrigerante</td>
+                    <td>R$ 6,00</td>
+                </tr>
+                <tr>
+                    <td>Água Mineral</td>
+                    <td>R$ 3,00</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="links-section">
+        <h3>Links Úteis:</h3>
+        <ul>
+            <li>
+                <a href="https://www.w3schools.com/html/" target="_blank" rel="noopener noreferrer">
+                    Aprenda mais sobre HTML no W3Schools
+                </a>
+            </li>
+            <li>
+                <a href="https://developer.mozilla.org/pt-BR/docs/Web/HTML" target="_blank" rel="noopener noreferrer">
+                    Documentação HTML na MDN
+                </a>
+            </li>
+        </ul>
+    </div>
+
+</body>
+</html>
