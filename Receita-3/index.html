@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">   
+   <head>
+      <meta charset="UTF-8">
+      <title>Cervejas</title>
+      <link href="estilo.css" rel="stylesheet">
+   </head>
+   
+   <body>
+      
+      <div id="containerBotao">
+         <button id="botaoCarregar">Alternar Cerveja</button>
+      </div>   
+
+      
+      <div id="exibicaoCerveja"></div>         
+   </body>   
+   
+   <script>
+      function alternarDiv() {
+         let div = document.getElementById("exibicaoCerveja");
+         
+         
+         if (div.classList.contains("visivel")) {
+            div.classList.remove("visivel");
+            
+           
+            setTimeout(() => {
+               div.innerHTML = "";
+            }, 500);
+            
+         } else {
+           
+            div.innerHTML = `<h1>Guinness</h1>`;
+            
+            
+            setTimeout(() => {
+               div.classList.add("visivel");
+            }, 10);
+         }
+      }
+      
+      let botao = document.getElementById("botaoCarregar");
+      botao.addEventListener("click", alternarDiv);                 
+   </script>
+</html>

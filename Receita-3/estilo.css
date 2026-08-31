@@ -1,0 +1,16 @@
+#exibicaoCerveja {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+}
+
+#exibicaoCerveja.visivel {
+    opacity: 1;
+}
+
+button {
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+}
