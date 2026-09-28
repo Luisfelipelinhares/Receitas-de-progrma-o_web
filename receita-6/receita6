@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <style>
+         body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f6f9;
+         }
+
+         #botaoCarregar {
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+         }
+
+         #botaoCarregar:hover {
+            background-color: #34495e;
+         }
+
+         table {
+            width: 100%;
+            max-width: 700px;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+         }
+
+         th, td {
+            padding: 12px 16px;
+            text-align: left;
+         }
+
+         th {
+            background-color: #2980b9;
+            color: white;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+         }
+
+         tr:nth-child(even) {
+            background-color: #f8f9fa;
+         }
+
+         tr:hover {
+            background-color: #eaf2f8;
+         }
+
+         td {
+            border-bottom: 1px solid #eef2f5;
+            color: #333;
+         }
+      </style>
+   </head>
+
+   <body>
+      <div><button id="botaoCarregar">Carregando cervejas...</button></div>
+      <div id="cervejasDiv"></div>
+   </body>
+
+   <script>
+      let cervejas = [
+         {
+            name: "Guiness",
+            alcohol: "10%",
+            style: "Imperial Stout",
+            ibu: "45"
+         },
+         {
+            name: "Desperados",
+            alcohol: "6%",
+            style: "Lager",
+            ibu: "20"
+         },
+         {
+            name: "Becks",
+            alcohol: "5%",
+            style: "Pilsen",
+            ibu: "30"
+         }
+      ]
+
+      // Função genérica com parâmetros default para ID do elemento, cabeçalhos e chaves dos objetos
+      const carregarDiv = (
+         cs, 
+         elementId = "cervejasDiv", 
+         headers = ["Nome", "Álcool", "Estilo", "Amargor"], 
+         keys = ["name", "alcohol", "style", "ibu"]
+      ) => {
+         const div = document.getElementById(elementId)
+
+         // Construção dinâmica dos cabeçalhos <th>
+         const headersHtml = headers.map(header => `<th>${header}</th>`).join("")
+
+         // Construção dinâmica das linhas <tr> e células <td>
+         const rowsHtml = cs.map(item => {
+            const cells = keys.map(key => `<td>${item[key] ?? ''}</td>`).join("")
+            return `<tr>${cells}</tr>`
+         }).join("\n")
+
+         div.innerHTML = `
+            <table>
+               <thead>
+                  <tr>${headersHtml}</tr>
+               </thead>
+               <tbody>
+                  ${rowsHtml}
+               </tbody>
+            </table>
+         `
+      }
+
+      let botao = document.getElementById("botaoCarregar")
+      botao.addEventListener("click", () => carregarDiv(cervejas))
+   </script>
+</html>
+
