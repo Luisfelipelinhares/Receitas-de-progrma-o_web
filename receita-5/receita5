@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+   </head>
+
+   <body>
+      <div><a href="#" id="linkCarregar">Carregar sorvetes...</a></div>
+      <div id="meu amor"></div>
+   </body>
+
+   <script>
+      let sorvetes = ["Pistache", "Chocolate Belga", "Doce de Leite"]
+
+      const carregarDiv = (cervs) => {
+         const div = document.getElementById("meu amor")
+         const sorvetesHtml = cervs.map(item => `<h1>${item}</h1>`)
+         div.innerHTML = sorvetesHtml.join("\n")
+      }
+
+      let link = document.getElementById("linkCarregar")
+      link.addEventListener("click", (e) => {
+         e.preventDefault()
+         carregarDiv(sorvetes)
+      })
+   </script>
+</html>
