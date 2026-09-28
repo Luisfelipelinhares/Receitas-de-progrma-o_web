@@ -1,0 +1,43 @@
+/**
+ * Função genérica para montar e inserir uma tabela em qualquer elemento HTML.
+ * @param {Array<Object>} dados - Lista de objetos retornados da API.
+ * @param {string} elementId - ID do elemento container.
+ * @param {Array<string>} headers - Rótulos das colunas da tabela.
+ * @param {Array<string>} keys - Propriedades dos objetos a serem exibidas.
+ */
+const montarTabela = (
+   dados = [], 
+   elementId = "conteudoDiv", 
+   headers = [], 
+   keys = []
+) => {
+   const div = document.getElementById(elementId)
+
+   if (!div) return
+
+   if (!dados || dados.length === 0) {
+      div.innerHTML = "<p class='mensagem-alerta'>Nenhum dado encontrado para exibir.</p>"
+      return
+   }
+
+   const chavesObjetos = keys.length > 0 ? keys : Object.keys(dados[0])
+   const cabecalhosTabela = headers.length > 0 ? headers : chavesObjetos.map(k => k.toUpperCase())
+
+   const headersHtml = cabecalhosTabela.map(header => `<th>${header}</th>`).join("")
+
+   const rowsHtml = dados.map(item => {
+      const cells = chavesObjetos.map(key => `<td>${item[key] ?? '-'}</td>`).join("")
+      return `<tr>${cells}</tr>`
+   }).join("\n")
+
+   div.innerHTML = `
+      <table class="tabela-generica">
+         <thead>
+            <tr>${headersHtml}</tr>
+         </thead>
+         <tbody>
+            ${rowsHtml}
+         </tbody>
+      </table>
+   `
+}
