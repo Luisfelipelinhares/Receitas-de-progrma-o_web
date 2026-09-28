@@ -1,0 +1,44 @@
+/**
+ * Função genérica para renderizar uma tabela HTML a partir de um array de objetos.
+ * @param {Array<Object>} dados - Vetor de objetos a serem exibidos.
+ * @param {string} elementId - ID do elemento onde a tabela será renderizada.
+ * @param {Array<string>} headers - Títulos dos cabeçalhos das colunas.
+ * @param {Array<string>} keys - Chaves correspondentes às propriedades dos objetos.
+ */
+const montarTabela = (
+   dados = [], 
+   elementId = "conteudoDiv", 
+   headers = [], 
+   keys = []
+) => {
+   const div = document.getElementById(elementId)
+
+   if (!div) return
+
+   if (!dados || dados.length === 0) {
+      div.innerHTML = "<p class='mensagem-alerta'>Nenhum dado encontrado para exibir.</p>"
+      return
+   }
+
+   // Se não forem passados chaves e cabeçalhos, extrai automaticamente do primeiro objeto
+   const chavesObjetos = keys.length > 0 ? keys : Object.keys(dados[0])
+   const cabecalhosTabela = headers.length > 0 ? headers : chavesObjetos.map(k => k.toUpperCase())
+
+   const headersHtml = cabecalhosTabela.map(header => `<th>${header}</th>`).join("")
+
+   const rowsHtml = dados.map(item => {
+      const cells = chavesObjetos.map(key => `<td>${item[key] ?? '-'}</td>`).join("")
+      return `<tr>${cells}</tr>`
+   }).join("\n")
+
+   div.innerHTML = `
+      <table class="tabela-generica">
+         <thead>
+            <tr>${headersHtml}</tr>
+         </thead>
+         <tbody>
+            ${rowsHtml}
+         </tbody>
+      </table>
+   `
+}
